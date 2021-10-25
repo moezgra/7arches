@@ -8,12 +8,11 @@
 <meta charset="utf-8">
 <head>
   <title>7arches bookstore</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
   <script src="${contextPath}/resources/js/jquery.min.js"></script>
   <script src="${contextPath}/resources/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="css/style.css"> 
+  <link rel="stylesheet" href="${contextPath }/css/style.css"> 
 </head>
 <body>
 
@@ -38,6 +37,7 @@
 						src="${contextPath }/img/${ article.imageCouvertureUrl }" alt="${ article.titre }"
 						width="250" height="250">
 					</a>
+					
 					<form action="${ pageContext.request.contextPath }/addArticle" method="POST" class="my-2">
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 						<input type=hidden name=id value="${article.id}">

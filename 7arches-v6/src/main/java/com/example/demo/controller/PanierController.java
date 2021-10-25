@@ -120,13 +120,13 @@ public class PanierController {
 			
 		
 		// Get login user information
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		// Get authenticated user name - in this case, it means email
-		String email = auth.getName();
+//		String email = auth.getName();
 		
-		Client client = clientService.findByEmail(email);
-		Panier panier = panierService.findByClient(client);
-		
+//		Client client = clientService.findByEmail(email);
+//		Panier panier = panierService.findByClient(client);
+		Panier panier = (Panier) request.getAttribute("panier", request.SCOPE_SESSION);
 		LignePanier lignePanier = panier.getLignesPanier().stream().filter(elt -> elt.getArticle().getId() == id)
 				.findFirst().get();
 		
@@ -144,32 +144,39 @@ public class PanierController {
 //		}
 		request.setAttribute("panier", panier, request.SCOPE_SESSION);
 		
-		panierService.save(panier);
+//		panierService.save(panier);
 		return "redirect:/showPanier";
 	}
 	
 	@GetMapping(value = "/deleteArticle")
 	public String deleteArticle(@RequestParam long id, Model model, WebRequest request) {
 		// Get login user information
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		// Get authenticated user name - in this case, it means email
-		String email = auth.getName();
+//		String email = auth.getName();
 				
-		Client client = clientService.findByEmail(email);
-		Panier panier = panierService.findByClient(client);
-				
+//		Client client = clientService.findByEmail(email);
+//		Panier panier = panierService.findByClient(client);
+		Panier panier = (Panier) request.getAttribute("panier", request.SCOPE_SESSION);		
 		LignePanier lignePanier = panier.getLignesPanier().stream().filter(elt -> elt.getArticle().getId() == id)
 				.findFirst().get();
 		lignePanier.setQte(0);
 		if (lignePanier.getQte() == 0) {
 			panier.getLignesPanier().removeIf(elt -> elt.getArticle().getId() == id);
 		}
-		panierService.save(panier);
+//		panierService.save(panier);
 		return "redirect:/showPanier";
 	}
 	
 	@GetMapping(value = "/validationCart")
 	public String validationCart(Model model, WebRequest request) {
+		// Get login user information
+				Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+				// Get authenticated user name - in this case, it means email
+				String email = auth.getName();
+						
+				Client client = clientService.findByEmail(email);
+				Panier panier = panierService.findByClient(client);
 		return "validationCart";
 	}
 //	@PostMapping(value = "/savePanier")

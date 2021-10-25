@@ -45,6 +45,7 @@
 	<div class="text-center">
 		<h1>Contact page</h1>
 	</div>
+	
 <%@ include file="footer.jsp" %>
 </body>  
 

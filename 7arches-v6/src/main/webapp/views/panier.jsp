@@ -21,7 +21,7 @@
 
 <!-- <title>Panier</title> -->
 
-	<h1>Votre panier contient :</h1>
+	<h2>Votre panier contient :</h2>
 	
 	<table class="table table-striped p-2">
 		<thead>
@@ -47,7 +47,8 @@
 						<td>${ligne.article.titre}</td>
 						
 						<td>
-							<form action="modifQuantity" method="post">
+						
+							<form action="${ pageContext.request.contextPath }/modifQuantity" method="post" class="my-2">
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 								<input type=hidden name=id value="${ligne.article.id}">
 								<input type="number" name=qte min=0 class="form-control-sm" value="${ligne.qte }" onchange="this.form.submit()">
@@ -57,7 +58,7 @@
 						<td>${ligne.article.prixHt }</td>
 						<td>${ligne.article.prixHt * ligne.qte}</td>
 						<td>
-							<form action = "deleteArticle">
+							<form action = "${ pageContext.request.contextPath }/deleteArticle" method="get" class="my-2">
 								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 								<input type=hidden name=id value="${ligne.article.id}">
 								<input type="submit" class="btn btn-sm" value="Supprimer">
