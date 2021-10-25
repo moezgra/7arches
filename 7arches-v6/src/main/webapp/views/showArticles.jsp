@@ -38,7 +38,7 @@
 						src="${contextPath }/img/${ article.imageCouvertureUrl }" alt="${ article.titre }"
 						width="250" height="250">
 					</a>
-					<form action="${contextPath }/addArticle" method="POST" class="my-2">
+					<form action="${ pageContext.request.contextPath }/addArticle" method="POST" class="my-2">
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 						<input type=hidden name=id value="${article.id}">
 						<button type=submit class="btn btn-danger btn-margin">Ajouter</button>

@@ -39,27 +39,27 @@ public class PanierController {
 	public String showPanier(Model model, WebRequest request) {
 		
 		// Get login user information
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		// Get authenticated user name - in this case, it means email
-		String email = auth.getName();
-		System.out.println("Email : " + email);
+//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//		// Get authenticated user name - in this case, it means email
+//		String email = auth.getName();
+//		System.out.println("Email : " + email);
+//		
+//		List<String> emails = new LinkedList<>();
+//		
+//		clientService.findAll().forEach(c->{
+//			emails.add(c.getEmail());
+//		});
+//		
+//		if (!emails.contains(email)) {
+//			return "redirect:/login";
+//		}
+//		
+//		// Get Client instance by email
+//		Client client = clientService.findByEmail(email);
 		
-		List<String> emails = new LinkedList<>();
+		Panier panier = (Panier) request.getAttribute("panier", request.SCOPE_SESSION);	
 		
-		clientService.findAll().forEach(c->{
-			emails.add(c.getEmail());
-		});
-		
-		if (!emails.contains(email)) {
-			return "redirect:/login";
-		}
-		
-		// Get Client instance by email
-		Client client = clientService.findByEmail(email);
-		
-//		Panier panier = (Panier) request.getAttribute("panier", request.SCOPE_SESSION);	
-		
-		Panier panier = panierService.findByClient(client);
+		//Panier panier = panierService.findByClient(client);
 			
 		
 		
@@ -70,31 +70,31 @@ public class PanierController {
 	@PostMapping(value = "/addArticle")
 	public String addArticle(@RequestParam long id, Model model, WebRequest request) {
 		
-		// Get login user information
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		// Get authenticated user name - in this case, it means email
-		String email = auth.getName();
-		
-		List<String> emails = new LinkedList<>();
-		
-		clientService.findAll().forEach(c->{
-			emails.add(c.getEmail());
-		});
-		
-		if (!emails.contains(email)) {
-			return "redirect:/login";
-		}	
-		
-		
-		Client client = clientService.findByEmail(email);
-		
-//		Panier panier = (Panier) request.getAttribute("panier", request.SCOPE_SESSION);
-		Panier panier = panierService.findByClient(client);
+//		// Get login user information
+//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//		// Get authenticated user name - in this case, it means email
+//		String email = auth.getName();
+//		
+//		List<String> emails = new LinkedList<>();
+//		
+//		clientService.findAll().forEach(c->{
+//			emails.add(c.getEmail());
+//		});
+//		
+//		if (!emails.contains(email)) {
+//			return "redirect:/login";
+//		}	
+//		
+//		
+//		Client client = clientService.findByEmail(email);
+//		
+		Panier panier = (Panier) request.getAttribute("panier", request.SCOPE_SESSION);
+//		Panier panier = panierService.findByClient(client);
 		
 		if (panier == null) {
 			panier = new Panier();
 		}
-		panier.setClient(client);
+		//panier.setClient(client);
 		LignePanier lignePanier = panier.getLignesPanier().stream().filter(elt -> elt.getArticle().getId() == id)
 				.findFirst().orElse(null);
 		if (lignePanier == null) {
@@ -110,8 +110,8 @@ public class PanierController {
 		}
 		
 		
-		panierService.save(panier);
-//		request.setAttribute("panier", panier, request.SCOPE_SESSION);
+		//panierService.save(panier);
+		request.setAttribute("panier", panier, request.SCOPE_SESSION);
 		return "redirect:/showPanier";
 	}
 
@@ -142,7 +142,7 @@ public class PanierController {
 //				panier.getLignesPanier().removeIf(elt -> elt.getArticle().getId() == id);
 //			}
 //		}
-//		request.setAttribute("panier", panier, request.SCOPE_SESSION);
+		request.setAttribute("panier", panier, request.SCOPE_SESSION);
 		
 		panierService.save(panier);
 		return "redirect:/showPanier";
