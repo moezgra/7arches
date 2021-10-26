@@ -29,7 +29,7 @@ public class ArticleController {
 		ArticleService articleService;
 		
 		// afficher la liste des articles
-		@GetMapping("/showArticles")
+		@GetMapping({"/showArticles", "/"})
 		public String showArticles(Model model, HttpServletRequest request) {
 			List<Article> articles = articleService.findAll();
 			model.addAttribute("articles", articles);

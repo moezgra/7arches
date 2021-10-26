@@ -100,6 +100,7 @@
 		</div>
 		<div class="col-sm-4 col-md-4 col-lg-4"></div>
 	</div>
+
 	<%-- <c:forEach items="${ panier.getLignesPanier() }" var="ligne">
 
 		<h2>Article : ${ligne.article.titre}</h2>
@@ -118,6 +119,11 @@
 
 	</c:forEach>
  		<h2>Prix total panier : <c:out value = "${ panier.prixTotalPanier() }"></c:out>euros</h2> --%>
+<!-- 	<br>
+	<br>
+	<br>
+	<br>
+	<br> -->		
 <%@ include file="footer.jsp"%>
 
 <script type="text/javascript">
