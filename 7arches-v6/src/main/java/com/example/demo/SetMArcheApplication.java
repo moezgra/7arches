@@ -48,9 +48,9 @@ public class SetMArcheApplication implements ApplicationRunner {
 		  LivrePapier livre2 = new LivrePapier("Harry Potter et l'Enfant Maudit",
 				  21.00, 0.2, "572-8455383251", "Harry-Potter-et-l-Enfant-Maudit.jpg", "Broché",
 				  "Quand passé et présents'entremêlent dangereusement, <br> père et fils se retrouvent face à une dure vérité <br> lesténèbres surviennent parfois des endroits les plus... ", 352, 45);
-		  LivrePapier livre6 = new LivrePapier("Le texte du film Tome 2 : Les Crimes de Grindelwald ",
-				  25.00, 0.2, "194-6825388284", "Les-Crimes-de-Grindelwald.jpg", "Poche",
-				  "Suivez Norbert Dragonneau à Paris,dans le second volet des AnimauxFantastiques. Au cinéma le 14/11/2018.", 320, 35);
+		  LivrePapier livre6 = new LivrePapier("Peter Pan",
+				  25.00, 0.2, "194-6825388284", "Peter-Pan2.jpg", "Poche",
+				  "Une nuit, à Londres, Peter Pan profite de l'absence de M. et Mme Darling pour s'introduire dans la chambre de leurs trois enfants et les emmener au pays de l'Imaginaire.", 290, 35);
 		  
 		  LivrePapier livre7= new LivrePapier("Il était une fois... James Bond", 19.0,
 				  0.2, "579-1035383150", "James-Bond.jpg", "Broché",
